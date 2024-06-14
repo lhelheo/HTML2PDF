@@ -1,7 +1,12 @@
-import { useRef } from "react";
+import { MutableRefObject, useRef } from "react";
 import ReactToPrint from "react-to-print";
 
-const Tabela = ({ data }: any) => {
+interface TableProps {
+  data: unknown[];
+  ref: MutableRefObject<null>;
+}
+
+const Tabela = (props: TableProps) => {
   return (
     <table>
       <thead className="bg-gray-400">
@@ -11,7 +16,7 @@ const Tabela = ({ data }: any) => {
         </tr>
       </thead>
       <tbody className="bg-gray-200">
-        {data.map((item: any, index: number) => (
+        {props.data.map((item: any, index: number) => (
           <tr key={index}>
             <td>{item.data}</td>
             <td>{item.descricao}</td>
